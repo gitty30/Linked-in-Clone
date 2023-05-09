@@ -12,6 +12,7 @@ import "firebase/compat/firestore";
 import "firebase/compat/auth";
 import { useSelector } from "react-redux";
 import { selectUser } from "./features/userSlice";
+import FlipMove from "react-flip-move";
 import "./Feed.css";
 const Feed = () => {
   const user = useSelector(selectUser);
@@ -71,18 +72,20 @@ const Feed = () => {
         message="Hi am archie currently pursuing B.E CSE 3rd year from Chitkara University"
         photoUrl='https://images.unsplash.com/photo-1472457897821-70d3819a0e24?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c21hbGx8ZW58MHx8MHx8&w=1000&q=80'
       /> */}
-      {posts.map(({ id, data: { name, desc, message, photoUrl } }) => {
-        return (
-          <Post
-            key={id}
-            name={name}
-            desc={desc}
-            message={message}
-            // photoUrl={photoUrl1}
-            avt={photoUrl}
-          />
-        );
-      })}{" "}
+      <FlipMove>
+        {posts.map(({ id, data: { name, desc, message, photoUrl } }) => {
+          return (
+            <Post
+              key={id}
+              name={name}
+              desc={desc}
+              message={message}
+              // photoUrl={photoUrl1}
+              avt={photoUrl}
+            />
+          );
+        })}
+      </FlipMove>
     </div>
   );
 };
